@@ -14,7 +14,7 @@ function CheckoutPage() {
                 price: item.price
             }))
         });
-    }, [cart]);
+    }, [cart]);  // ✅ Fixed: added cart as a dependency
 
     const handleCompletePurchase = () => {
         trackEvent('purchase', {
