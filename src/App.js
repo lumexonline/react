@@ -1,24 +1,35 @@
-import React, { useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ProductPage from './pages/ProductPage';
-import CheckoutPage from './pages/CheckoutPage';
-import { trackPageView } from './utils/analytics';
+import React, { useState } from 'react';
 
 function App() {
-    const location = useLocation();
+  const [input1, setInput1] = useState('');
+  const [input2, setInput2] = useState('');
 
-    useEffect(() => {
-        trackPageView(location.pathname);
-    }, [location]);
+  const fixed1 = Number(input1).toFixed(2);
+  const fixed2 = Number(input2).toFixed(2);
+  const sum = Number(fixed1) + Number(fixed2);
 
-    return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-        </Routes>
-    );
+  return (
+    <div style={{ padding: '20px', maxWidth: '300px', margin: 'auto' }}>
+      <h2>Fixed Precision Calculator</h2>
+      <input
+        type="number"
+        value={input1}
+        onChange={(e) => setInput1(e.target.value)}
+        placeholder="Enter first number"
+        style={{ width: '100%', marginBottom: '10px' }}
+      />
+      <input
+        type="number"
+        value={input2}
+        onChange={(e) => setInput2(e.target.value)}
+        placeholder="Enter second number"
+        style={{ width: '100%', marginBottom: '10px' }}
+      />
+      <p>Rounded Input 1: {fixed1}</p>
+      <p>Rounded Input 2: {fixed2}</p>
+      <p>Sum: {sum}</p>
+    </div>
+  );
 }
 
 export default App;
