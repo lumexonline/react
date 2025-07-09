@@ -6,7 +6,7 @@ function App() {
 
   const fixed1 = Number(input1).toFixed(2);
   const fixed2 = Number(input2).toFixed(2);
-  const sum = Number(fixed1) + Number(fixed2);
+  const sum = fixed1 + fixed2;
 
   return (
     <div style={{ padding: '20px', maxWidth: '300px', margin: 'auto' }}>
